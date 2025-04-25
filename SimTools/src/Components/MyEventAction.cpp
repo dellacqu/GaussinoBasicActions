@@ -60,7 +60,6 @@
 //=============================================================================
 void MyEventAction::BeginOfEventAction( const G4Event* /* theEvent */ ) {
   info( "MyEventAction function BeginOfEventAction" );
-  info( " dio porco fottuto!!!!" );
   return;
 }
 

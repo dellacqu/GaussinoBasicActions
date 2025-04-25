@@ -49,7 +49,6 @@
 //=============================================================================
 void MySteppingAction::UserSteppingAction( const G4Step* /* theRun */ ) {
   info( "MySteppingAction function UserSteppingAction" );
-  info( " dio maiale fottuto!!!!" );
   return;
 }
 
@@ -63,7 +62,6 @@ MySteppingAction::~MySteppingAction() {}
 //=============================================================================
 StatusCode MySteppingActionFAC::initialize() {
   info() << "Entering initialize function" << endmsg;
-  info() << "Ending initialize function" << endmsg;
   return StatusCode::SUCCESS;
 };
 

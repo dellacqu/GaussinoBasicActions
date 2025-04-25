@@ -30,6 +30,7 @@ gaudi_add_module(SimTools
     src/Components/MyEventAction.cpp
     src/Components/MyRunAction.cpp
     src/Components/MySteppingAction.cpp
+    src/Components/MyTrackingAction.cpp
     LINK
         Geant4::G4run
         Geant4::G4intercoms

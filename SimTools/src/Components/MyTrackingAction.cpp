@@ -11,6 +11,14 @@
 // $Id: $
 // Include files
 
+#include "CLHEP/Geometry/Point3D.h"
+///
+#include "G4Electron.hh"
+#include "G4Gamma.hh"
+#include "G4OpticalPhoton.hh"
+#include "G4Positron.hh"
+#include "G4Step.hh"
+#include "G4Timer.hh"
 ///
 #include "GaudiKernel/MsgStream.h"
 //
@@ -18,6 +26,8 @@
 #include "GaudiKernel/ISvcLocator.h"
 #include "GaudiKernel/NTuple.h"
 #include "GaudiKernel/SmartDataPtr.h"
+
+#include "GaudiKernel/INTupleSvc.h"
 
 #include "GaudiKernel/Algorithm.h"
 #include "GaudiKernel/Chrono.h"
@@ -38,35 +48,42 @@
 #include <fstream>
 #include <vector>
 // local
-#include "MyRunAction.h"
+#include "MyTrackingAction.h"
 
+// #include "TH1F.h"
 #include <string>
 //-----------------------------------------------------------------------------
-// Implementation file for class : MyRunAction
+// Implementation file for class : MyTrackingAction
 //
 //-----------------------------------------------------------------------------
-// Sample Run Action
+// Sample Tracking Action
 //=============================================================================
-void MyRunAction::BeginOfRunAction( const G4Run* /* theRun */ ) {
-  info( "MyRunAction function BeginOfRunAction" );
+void MyTrackingAction::PreUserTrackingAction( const G4Track* /* theTrack */ ) {
+  info( "MyTrackingAction function PreUserTrackingAction" );
   return;
 }
 
-void MyRunAction::EndOfRunAction( const G4Run* /* theRun */ ) {
-  info( "MyRunAction function EndOfEventAction" );
+void MyTrackingAction::PostUserTrackingAction( const G4Track* /* theTrack */ ) {
+  info( "MyTrackingAction function PostUserTrackingAction" );
   return;
+}
+
+void MyTrackingAction::SetTrackingManagerPointer( G4TrackingManager* /* theTrackingManager */
+{
+   info( "MyTrackingAction function SetTrackingManagerPointer" );
+   return;
 }
 
 
 //=============================================================================
 // Destructor
 //=============================================================================
-MyRunAction::~MyRunAction() {}
+MyTrackingAction::~MyTrackingAction() {}
 
 //=============================================================================
 // Initialize
 //=============================================================================
-StatusCode MyRunActionFAC::initialize() {
+StatusCode MyTrackingActionFAC::initialize() {
   info() << "Entering initialize function" << endmsg;
   info() << "Ending initialize function" << endmsg;
   return StatusCode::SUCCESS;
@@ -75,8 +92,8 @@ StatusCode MyRunActionFAC::initialize() {
 //=============================================================================
 // Finalize
 //=============================================================================
-StatusCode MyRunActionFAC::finalize() {
+StatusCode MyTrackingActionFAC::finalize() {
   debug() << "Entering finalize function" << endmsg;
   return StatusCode::SUCCESS;
 };
-DECLARE_COMPONENT_WITH_ID( MyRunActionFAC, "MyRunAction" )
+DECLARE_COMPONENT_WITH_ID( MyTrackingActionFAC, "MyTrackingAction" )
